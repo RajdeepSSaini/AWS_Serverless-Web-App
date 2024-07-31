@@ -23,7 +23,7 @@ CloudFront is deployed as a content delivery network (CDN) to ensure secure acce
 This project showcases a serverless architecture on AWS, capable of securely handling user requests, storing data in DynamoDB, and delivering content efficiently using CloudFront. It serves as a practical example of how to build and deploy a serverless web application.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## Contact
 If you have any questions, feel free to reach out:
