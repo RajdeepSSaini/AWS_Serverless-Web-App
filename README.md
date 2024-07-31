@@ -1,17 +1,6 @@
 # Serverless Web Application on AWS
 Welcome to the repository for my serverless web application project on AWS! This project leverages various AWS services to create a fully functional serverless web application. Below, you'll find an overview of the project's architecture and the steps involved in setting up the application.
 
-## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Setting up an S3 Bucket](#setting-up-an-s3-bucket)
-3. [Configuring API Gateway](#configuring-api-gateway)
-4. [Creating Lambda Functions](#creating-lambda-functions)
-5. [Working with DynamoDB](#working-with-dynamodb)
-6. [Implementing Secure Connections with CloudFront](#implementing-secure-connections-with-cloudfront)
-7. [Conclusion](#conclusion)
-8. [License](#license)
-9. [Contact](#contact)
-
 ## Project Overview
 This project demonstrates how to deploy a serverless web application on AWS. The application uses an S3 bucket to host static web content, API Gateway to handle API requests, Lambda functions for backend processing, DynamoDB for data storage, and CloudFront for secure and efficient content delivery.
 
