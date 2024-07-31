@@ -1,26 +1,72 @@
-# Serverless Web Application on AWS
-Welcome to the repository for my serverless web application project on AWS! This project leverages various AWS services to create a fully functional serverless web application. Below, you'll find an overview of the project's architecture and the steps involved in setting up the application.
+# Deploying a Serverless Web Application with AWS Lambda, API Gateway, and DynamoDB
 
-## Project Overview
-This project demonstrates how to deploy a serverless web application on AWS. The application uses an S3 bucket to host static web content, API Gateway to handle API requests, Lambda functions for backend processing, DynamoDB for data storage, and CloudFront for secure and efficient content delivery.
+## Overview
+This project demonstrates how to deploy a serverless web application using AWS Lambda, API Gateway, and DynamoDB. The tutorial covers the creation of an IAM role, a Lambda function, a DynamoDB table, and the configuration of API Gateway to handle requests.
 
-## 1. Setting up an S3 Bucket
-The S3 bucket is used to host the static web content, including HTML, CSS, and JavaScript files.
+## Prerequisites
+Before you start, ensure you have the following:
+- An AWS account
+- Basic knowledge of AWS services (Lambda, DynamoDB, API Gateway)
+- AWS CLI configured on your local machine
 
-## 2. Configuring API Gateway
-API Gateway endpoints are configured to trigger Lambda functions. Both GET and POST methods are set up to interact with the DynamoDB database.
+## Project Components
+1. **DynamoDB**: Acts as the backend database storage.
+2. **Lambda**: Functions as the web server.
+3. **API Gateway**: Serves as the frontend interface.
 
-## 3. Creating Lambda Functions
-Lambda functions written in Python handle the API Gateway requests. These functions include retrieving data from DynamoDB and inserting new data into it.
+## Project Setup
 
-## 4. Working with DynamoDB
-A DynamoDB table is set up to store the application's data. The table schema is defined, and CRUD operations are performed using Lambda functions.
+### Step 1: Create an IAM Role for Lambda
+1. Navigate to the IAM console.
+2. Click on **Roles** and then **Create role**.
+3. Select **Lambda** under the service options.
+4. Attach the following policies:
+    - `AWSLambdaBasicExecutionRole`
+    - `AmazonDynamoDBFullAccess`
+5. Name the role (e.g., `lambda-dynamo-role`) and create it.
 
-## 5. Implementing Secure Connections with CloudFront
-CloudFront is deployed as a content delivery network (CDN) to ensure secure access to the web application. It serves the S3 content securely over HTTPS, providing encryption in transit and improving the application's performance.
+### Step 2: Create a DynamoDB Table
+1. Navigate to the DynamoDB console.
+2. Click on **Tables** and then **Create table**.
+3. Set the table name to `AAS_table` and the partition key to `email` (String).
+4. Leave the default settings and create the table.
+
+### Step 3: Create a Lambda Function
+1. Navigate to the Lambda console.
+2. Click on **Create function**.
+3. Set the function name (e.g., `aas-demo-function`), choose Python 3.8 as the runtime.
+4. Under **Execution role**, select **Use an existing role** and choose the role created in Step 1.
+5. Create the function.
+
+### Step 4: Upload the Lambda Function Code
+1. Prepare a ZIP file containing the following files:
+    - `lambda_function.py`
+    - `contact_us.html`
+    - `success.html`
+2. In the Lambda console, upload the ZIP file to the function.
+3. Ensure the Lambda function code handles GET and POST requests to serve the HTML pages and interact with DynamoDB.
+
+### Step 5: Configure API Gateway
+1. Navigate to the API Gateway console.
+2. Click on **Create API** and choose **REST API**.
+3. Name the API (e.g., `demo-api`) and create it.
+4. Create methods for GET and POST requests:
+    - For GET, integrate with the Lambda function.
+    - For POST, integrate with the Lambda function.
+5. Deploy the API and note the invoke URL.
+
+## Usage
+1. Access the invoke URL from the API Gateway in your browser.
+2. Fill out the contact form and submit it.
+3. Check DynamoDB to see the stored entries.
+
+## Files
+- **lambda_function.py**: Contains the Lambda function code.
+- **contact_us.html**: The contact form served by the Lambda function.
+- **success.html**: The success page is displayed upon successful form submission.
 
 ## Conclusion
-This project showcases a serverless architecture on AWS, capable of securely handling user requests, storing data in DynamoDB, and delivering content efficiently using CloudFront. It serves as a practical example of how to build and deploy a serverless web application.
+This project demonstrates the integration of AWS Lambda, DynamoDB, and API Gateway to create a serverless web application. By following the steps, you can deploy and test the application on AWS.
 
 ## License
 This project is licensed under the MIT License.
@@ -32,4 +78,3 @@ If you have any questions, feel free to reach out:
 - **Email:** [singhsainirajdeep@example.com](mailto:singhsainirajdeep@example.com)
 - **GitHub:** [Rajdeep Singh Saini](https://github.com/RajdeepSSaini)
 
-Happy Coding!
